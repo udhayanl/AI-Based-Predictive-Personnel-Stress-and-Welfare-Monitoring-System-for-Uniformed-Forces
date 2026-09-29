@@ -1,0 +1,132 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+:root {
+  --font-display: 'Instrument Serif', serif;
+  --font-body: 'Inter', sans-serif;
+  --background: 201 100% 13%;
+  --foreground: 0 0% 100%;
+  --muted-foreground: 240 4% 66%;
+  --primary: 0 0% 100%;
+  --primary-foreground: 0 0% 4%;
+  --secondary: 0 0% 10%;
+  --muted: 0 0% 10%;
+  --accent: 0 0% 10%;
+  --border: 0 0% 18%;
+  --input: 0 0% 18%;
+}
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900 font-sans antialiased selection:bg-blue-600 selection:text-white;
+  }
+}
+
+/* Custom scrollbar for government dashboard aesthetic */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Glass and card subtle elevations */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.navy-card {
+  background: linear-gradient(135deg, #0b1d3a 0%, #102a54 100%);
+  color: #ffffff;
+}
+
+/* 8. Premium Glassmorphic Login Card */
+.login-glass {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.12), 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+/* 9. Liquid Glass Effect */
+.liquid-glass {
+  background: rgba(255, 255, 255, 0.01);
+  background-blend-mode: luminosity;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: none;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.45) 0%,
+    rgba(255, 255, 255, 0.15) 20%,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0) 60%,
+    rgba(255, 255, 255, 0.15) 80%,
+    rgba(255, 255, 255, 0.45) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* 18. Subtle Entrance Animations */
+@keyframes fade-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-rise {
+  animation: fade-rise 0.8s ease-out both;
+}
+
+.animate-fade-rise-delay {
+  animation: fade-rise 0.8s ease-out 0.2s both;
+}
+
+.animate-fade-rise-delay-2 {
+  animation: fade-rise 0.8s ease-out 0.4s both;
+}
+
+/* Custom badge transitions */
+.badge-pulse {
+  animation: pulseSlow 2.5s infinite;
+}
+
+@keyframes pulseSlow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}

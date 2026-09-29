@@ -1,0 +1,15 @@
+{
+  "name": "ai-based-predictive-personnel-stress-and-welfare-monitoring-system",
+  "version": "1.0.0",
+  "description": "Smart India Hackathon SIH26186 - AI-Based Predictive Personnel Stress and Welfare Monitoring System for Uniformed Forces",
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "dev:server": "npm run dev --prefix server",
+    "dev:client": "npm run dev --prefix client",
+    "seed": "npm run seed --prefix server",
+    "test:ml": "python ml-service/risk_engine.py"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
