@@ -2,9 +2,15 @@ import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
+import path from 'path';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
 import { connectDB, getDBStatus } from './config/db.js';
 import { dataStore } from './utils/dataStore.js';
 import { errorHandler } from './middleware/errorHandler.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Route imports
 import authRoutes from './routes/authRoutes.js';
@@ -67,6 +73,19 @@ app.use('/api/analytics', analyticsRoutes);
 app.use('/api/privacy', privacyRoutes);
 app.use('/api/audit-logs', auditRoutes);
 app.use('/api/alerts', alertRoutes);
+
+// Serve compiled frontend in production (Single Unified Web Service)
+const clientBuildPath = path.join(__dirname, '../client/dist');
+if (fs.existsSync(clientBuildPath)) {
+  app.use(express.static(clientBuildPath));
+
+  app.get('*', (req, res, next) => {
+    if (req.path.startsWith('/api')) {
+      return next();
+    }
+    res.sendFile(path.join(clientBuildPath, 'index.html'));
+  });
+}
 
 // Global Error Handler
 app.use(errorHandler);
