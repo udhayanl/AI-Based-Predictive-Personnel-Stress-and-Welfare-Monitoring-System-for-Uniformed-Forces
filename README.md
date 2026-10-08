@@ -20,7 +20,7 @@ personnel-stress-ai/
 │
 ├── backend/
 │   ├── main.py                     # FastAPI application with ML inference logic
-│   ├── personnel_stress_model.pkl  # Trained scikit-learn pipeline (172 MB)
+│   ├── personnel_stress_model.pkl  # Trained scikit-learn pipeline (~60.6 MB)
 │   ├── inspect_model.py            # Inspection script to extract pipeline metadata
 │   ├── test_backend.py             # Automated unit/integration tests for API
 │   ├── requirements.txt            # Python backend dependencies
